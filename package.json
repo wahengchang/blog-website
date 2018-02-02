@@ -2,19 +2,22 @@
   "name": "blog-website",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
   "engines": {
-    "node": ">=9.2.0"
+    "node": ">=9.5.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint": "^4.12.1",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "webpack": "^3.9.1",
-    "webpack-dev-server": "^2.9.5"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "react": "^16.2.0",
