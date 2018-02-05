@@ -1,13 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
-// Generate html template
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// Clean bundle folder
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  entry: './client/index.js',
+  entry: path.resolve(__dirname, 'client/index.js'),
   output: {
     filename: '[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -37,20 +35,41 @@ module.exports = {
         options: {
           cacheDirectory: true
         }
+      },
+      {
+        test: /\.(scss|sass|css)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { sourceMap: true, minimize: true } },
+            // { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'sass-loader', options: { sourceMap: true } },
+          ],
+        }),
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192
+        }
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    new ExtractTextPlugin({
+      filename: '[hash].styles.css',
+      disable: process.env.NODE_ENV !== 'production',
     }),
     new HtmlWebpackPlugin({
       title: 'Blog',
-      inject: 'head',
+      inject: true,
       author: 'Rukeith',
-      template: 'client/index.html',
+      favicon: './client/assets/favicon.ico',
       hash: process.env.NODE_ENV === 'production',
+      template: path.resolve(__dirname, 'client/index.html'),
       minify: {
         removeComments: process.env.NODE_ENV === 'production',
         collapseWhitespace: process.env.NODE_ENV === 'production',
