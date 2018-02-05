@@ -1,17 +1,17 @@
 const path = require('path');
-const webpack = require('webpack');
-// Generate html template
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// Clean bundle folder
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  entry: './src/client/index.js',
+  entry: path.resolve(__dirname, 'client/index.js'),
   output: {
     filename: '[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -19,14 +19,22 @@ module.exports = {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'eslint-loader',
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+          emitError: true,
+          emitWarning: true,
+          failOnError: true,
+          failOnWarning: true,
+        }
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader', options: { cacheDirectory: true } }
-        ],
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true
+        }
       },
       {
         test: /\.(scss|sass|css)$/,
@@ -34,51 +42,39 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             { loader: 'css-loader', options: { sourceMap: true, minimize: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
+            // { loader: 'postcss-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ],
         }),
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            limit: 8192, // file size is lower than 8192B will convert to base64
-            name: 'font/[name].[hash:8].[ext]'
-          },
-        },
-      },
-      {
-        test: /\.(gif|jpg|png)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 8192, // file size is lower than 8192B will convert to base64
-            name: 'images/[name].[hash:8].[ext]'
-          },
-        },
-      },
-    ],
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192
+        }
+      }
+    ]
   },
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin(['dist']),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new ExtractTextPlugin({
       filename: '[hash].styles.css',
       disable: process.env.NODE_ENV !== 'production',
     }),
     new HtmlWebpackPlugin({
-      inject: 'body',
-      title: 'Rou Rou',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-      author: 'rou rou test',
-      template: 'src/index.html',
+      title: 'Blog',
+      inject: true,
+      author: 'Rukeith',
+      favicon: './client/assets/favicon.ico',
       hash: process.env.NODE_ENV === 'production',
-    }),
-    new BundleAnalyzerPlugin(),
-  ],
+      template: path.resolve(__dirname, 'client/index.html'),
+      minify: {
+        removeComments: process.env.NODE_ENV === 'production',
+        collapseWhitespace: process.env.NODE_ENV === 'production',
+        preserveLineBreaks: process.env.NODE_ENV === 'production'
+      }
+    })
+  ]
 };

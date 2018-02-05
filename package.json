@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "dev": "./node_modules/.bin/cross-env NODE_ENV=deployment webpack-dev-server --config webpack.dev.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "dev": "NODE_ENV=deployment webpack-dev-server --color --progress --config webpack.dev.js"
   },
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
@@ -13,31 +13,34 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/preset-react": "^7.0.0-beta.39",
+    "babel-loader": "8.0.0-beta.0",
     "clean-webpack-plugin": "^0.1.18",
-    "eslint": "^4.16.0",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "cross-env": "^5.1.3",
-    "kcors": "^2.2.1",
-    "koa": "^2.4.1",
-    "koa-body": "^2.5.0",
-    "koa-helmet": "^3.3.0",
-    "koa-router": "^7.4.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6"
+    "react-dom": "^16.2.0"
   }
 }
