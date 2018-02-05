@@ -25,5 +25,12 @@
   "plugins": [
     "react",
     "import"
-  ]
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  }
 }

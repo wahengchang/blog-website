@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Counter = ({increment, incrementIfOdd, incrementAsync, decrement, counter}) => (
+const Counter = ({
+  increment,
+  incrementIfOdd,
+  incrementAsync,
+  decrement,
+  counter,
+}) => (
   <p>
     Clicked: {counter} times
     {' '}

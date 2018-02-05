@@ -6,7 +6,7 @@ import Counter from '../common/containers/Counter';
 import configureStore from '../common/store/configureStore';
 import '../common/assets/index.css';
 
-const preloadedState = window.__PRELOADED_STATE__;
+const preloadedState = window.PRELOADED_STATE;
 const store = configureStore(preloadedState);
 
 render(
