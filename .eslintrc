@@ -3,6 +3,25 @@
     "eslint:recommended",
     "airbnb"
   ],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "impliedStrict": true,
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+      "allowImportExportEverywhere": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "commonjs": true,
+    "shared-node-browser": true,
+    "es6": true
+  },
   "plugins": [
     "react",
     "import"
