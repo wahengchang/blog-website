@@ -15,26 +15,26 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.(js|jsx)$/,
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader',
-      //   options: {
-      //     cache: true,
-      //     emitError: true,
-      //     emitWarning: true,
-      //     failOnError: true,
-      //     failOnWarning: true,
-      //   }
-      // },
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+          emitError: true,
+          emitWarning: true,
+          failOnError: true,
+          failOnWarning: true,
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          cacheDirectory: true
-        }
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.(scss|sass|css)$/,
@@ -51,10 +51,10 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 8192
-        }
-      }
-    ]
+          limit: 8192,
+        },
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -73,8 +73,8 @@ module.exports = {
       minify: {
         removeComments: process.env.NODE_ENV === 'production',
         collapseWhitespace: process.env.NODE_ENV === 'production',
-        preserveLineBreaks: process.env.NODE_ENV === 'production'
-      }
-    })
-  ]
+        preserveLineBreaks: process.env.NODE_ENV === 'production',
+      },
+    }),
+  ],
 };
