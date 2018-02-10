@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -59,6 +61,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
     new ExtractTextPlugin({
       filename: '[hash].styles.css',
       disable: process.env.NODE_ENV !== 'production',
@@ -75,6 +80,10 @@ module.exports = {
         collapseWhitespace: process.env.NODE_ENV === 'production',
         preserveLineBreaks: process.env.NODE_ENV === 'production',
       },
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'all',
     }),
   ],
 };
