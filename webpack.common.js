@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
@@ -30,6 +29,7 @@ module.exports = {
       //   },
       // },
       {
+        type: 'javascript/auto',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -38,6 +38,7 @@ module.exports = {
         },
       },
       {
+        type: 'javascript/auto',
         test: /\.(scss|sass|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -49,6 +50,7 @@ module.exports = {
         }),
       },
       {
+        type: 'javascript/auto',
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
@@ -59,9 +61,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-    }),
     new ExtractTextPlugin({
       filename: '[hash].styles.css',
       disable: process.env.NODE_ENV !== 'production',

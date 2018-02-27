@@ -9,7 +9,7 @@
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
   "engines": {
-    "node": ">=9.6.0"
+    "node": ">=9.6.1"
   },
   "license": "MIT",
   "devDependencies": {
@@ -25,26 +25,26 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.9",
-    "html-webpack-plugin": "^2.30.1",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "file-loader": "^1.1.10",
+    "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.1",
     "preload-webpack-plugin": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
-    "uglifyjs-webpack-plugin": "^1.2.2",
     "url-loader": "^0.6.2",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.1",
     "webpack-bundle-analyzer": "^2.11.0",
-    "webpack-dev-server": "^2.11.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
     "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.32",
     "material-ui-icons": "^1.0.0-beta.35",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
