@@ -9,7 +9,7 @@
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
   "engines": {
-    "node": ">=9.6.0"
+    "node": ">=9.6.1"
   },
   "license": "MIT",
   "devDependencies": {
@@ -26,7 +26,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.9",
+    "file-loader": "^1.1.10",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.1",
@@ -44,10 +44,11 @@
     "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.32",
     "material-ui-icons": "^1.0.0-beta.35",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
+    "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
