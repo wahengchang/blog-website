@@ -1,14 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'client/index.js'),
   output: {
     filename: '[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -78,14 +76,14 @@ module.exports = {
         preserveLineBreaks: process.env.NODE_ENV === 'production',
       },
     }),
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      as(entry) {
-        if (/\.css$/.test(entry)) return 'style';
-        if (/\.woff$/.test(entry)) return 'font';
-        if (/\.png$/.test(entry)) return 'image';
-        return 'script';
-      },
-    }),
+    // new PreloadWebpackPlugin({
+    //   rel: 'preload',
+    //   as(entry) {
+    //     if (/\.css$/.test(entry)) return 'style';
+    //     if (/\.woff$/.test(entry)) return 'font';
+    //     if (/\.png$/.test(entry)) return 'image';
+    //     return 'script';
+    //   },
+    // }),
   ],
 };
