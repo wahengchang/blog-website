@@ -9,7 +9,7 @@
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
   "engines": {
-    "node": ">=9.6.1"
+    "node": ">=9.7.1"
   },
   "license": "MIT",
   "devDependencies": {
