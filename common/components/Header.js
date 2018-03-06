@@ -16,13 +16,10 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 
 const styles = {
   root: {
-    flexGrow: 1,
-  },
-  appbar: {
-    background: '#000',
+    display: 'grid',
   },
   flex: {
-    flex: 1,
+    gridTemplateColumns: '1fr',
   },
   menuButton: {
     marginLeft: -12,
@@ -35,25 +32,28 @@ const styles = {
   },
 };
 
+const NavItem = ({ title, path, classes }) => (
+  <NavLink exact to={path} className={classes}>
+    <Typography variant="title" color="inherit">
+      {title}
+    </Typography>
+  </NavLink>
+);
+
+NavItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+};
+
 const Header = (props) => {
   const { classes, auth, avatar } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" className={classes.appbar}>
+      <AppBar position="sticky">
         <Toolbar>
-          {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton> */}
-          <NavLink exact to="/intro" className={classes.flex}>
-            <Typography variant="title" color="inherit">
-              Intro
-            </Typography>
-          </NavLink>
-          <NavLink exact to="/articles" className={classes.flex}>
-            <Typography variant="title" color="inherit">
-              Blog
-            </Typography>
-          </NavLink>
+          <NavItem classes={classes.flex} path="/intro" title="Intro" />
+          <NavItem classes={classes.flex} path="/articles" title="Blog" />
           <TextField
             id="search"
             label="Search field"
