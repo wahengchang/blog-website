@@ -6,20 +6,20 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import Switch from 'material-ui/Switch';
-import { FormControlLabel, FormGroup } from 'material-ui/Form';
-import Menu, { MenuItem } from 'material-ui/Menu';
+// import IconButton from 'material-ui/IconButton';
+// import Switch from 'material-ui/Switch';
+// import { FormControlLabel, FormGroup } from 'material-ui/Form';
+// import Menu, { MenuItem } from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
-import MenuIcon from 'material-ui-icons/Menu';
-import AccountCircle from 'material-ui-icons/AccountCircle';
+// import MenuIcon from 'material-ui-icons/Menu';
+// import AccountCircle from 'material-ui-icons/AccountCircle';
+import NavItems from './NavItem';
 
 const styles = {
-  root: {
+  header: {
+    width: '100%',
     display: 'grid',
-  },
-  flex: {
-    gridTemplateColumns: '1fr',
+    gridTemplateColumns: 'auto 1fr 100px 100px 100px',
   },
   menuButton: {
     marginLeft: -12,
@@ -32,8 +32,8 @@ const styles = {
   },
 };
 
-const NavItem = ({ title, path, classes }) => (
-  <NavLink exact to={path} className={classes}>
+const NavItem = ({ title, path }) => (
+  <NavLink exact to={path}>
     <Typography variant="title" color="inherit">
       {title}
     </Typography>
@@ -49,11 +49,10 @@ NavItem.propTypes = {
 const Header = (props) => {
   const { classes, auth, avatar } = props;
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="sticky">
-        <Toolbar>
-          <NavItem classes={classes.flex} path="/intro" title="Intro" />
-          <NavItem classes={classes.flex} path="/articles" title="Blog" />
+        <Toolbar className={classes.header}>
+          <div>{'Rukeith\'s blog'}</div>
           <TextField
             id="search"
             label="Search field"
@@ -62,6 +61,8 @@ const Header = (props) => {
             className={classes.textField}
             margin="normal"
           />
+          <NavItems path="/intro" title="Intro" />
+          <NavItem path="/articles" title="Blog" />
           {
             (() => {
               if (auth) {
