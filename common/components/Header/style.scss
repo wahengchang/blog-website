@@ -1,0 +1,11 @@
+header {
+  height: 65px;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: grid;
+  background-color: darkcyan;
+  grid-template-columns: auto 1fr 100px 100px 100px;
+  line-height: 65px;
+  text-align: center;
+  font-weight: 700;
+}

@@ -1,0 +1,20 @@
+header .header-search-input {
+  margin: .0 30px;
+
+  #search {
+    font: inherit;
+    cursor: text;
+    border: 0;
+    width: 100%;
+    outline: none;
+    display: block;
+    color: currentColor;
+    box-sizing: content-box;
+    background: transparent;
+
+    &::placeholder {
+      opacity: 0.7;
+      color: darkgray;
+    }
+  }
+}
