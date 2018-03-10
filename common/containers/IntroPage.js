@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const IntroPage = () => (
-  <div>
+  <main>
     I am intro page
-  </div>
+  </main>
 );
 
 export default withRouter(connect()(IntroPage));

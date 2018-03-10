@@ -5,7 +5,7 @@ import ArticlePage from './containers/ArticlePage';
 // import SearchPage from './containers/SearchPage';
 import TagList from './containers/TagList';
 // import TagPage from './containers/TagPage';
-// import NotFoundPage from './containers/NotFoundPage';
+import NotFoundPage from './containers/NotFoundPage';
 
 const routes = [
   {
@@ -46,10 +46,10 @@ const routes = [
       //   path: '/search',
       //   component: SearchPage,
       // },
-      // {
-      //   path: '*',
-      //   component: NotFoundPage,
-      // },
+      {
+        path: '*',
+        component: NotFoundPage,
+      },
     ],
   },
 ];
