@@ -12,18 +12,18 @@ const Header = (props) => {
       <SearchInput />
       <NavItem path="/intro" title="Intro" />
       <NavItem path="/articles" title="Blog" />
-      {/* {
+      {
         (() => {
           if (auth) {
             return (
-              <Button color="inherit">Logout</Button>
+              <NavItem path="/logout" title="Logout" />
             );
           }
           return (
-            <Button color="inherit">Login</Button>
+            <NavItem path="/login" title="Login" />
           );
         })()
-      } */}
+      }
     </header>
   );
 };
