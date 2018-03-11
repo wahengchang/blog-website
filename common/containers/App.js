@@ -6,11 +6,16 @@ import { renderRoutes } from 'react-router-config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const styles = {
+  display: 'grid',
+  gridTemplateRows: '65px 1fr 300px',
+};
+
 const App = ({ route }) => (
-  <div>
+  <div style={styles}>
     <Header />
-    {renderRoutes(route.routes)}
-    <Footer />
+    {/* {renderRoutes(route.routes)} */}
+    {/* <Footer /> */}
   </div>
 );
 

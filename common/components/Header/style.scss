@@ -4,18 +4,35 @@
 }
 
 header {
-  height: 65px;
-  padding-right: 20px;
-  padding-left: 20px;
   display: grid;
-  background-color: darkcyan;
-  grid-template-columns: auto 1fr 100px 100px 100px;
+  font-size: 18px;
   line-height: 65px;
   text-align: center;
-  font-weight: 700;
+  background-color: #5DAC81;
+  grid-template-columns: auto 1fr repeat(3, 100px);
 
   #logo {
-    margin: 0 10px;
+    color: #6F3381;
+    min-width: 120px;
     font-family: headerLogo;
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  header {
+    #header-menu {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  header {
+    grid-template-columns: 100px auto;
+
+    #logo,
+    .header-nav-item {
+      display: none;
+    }
   }
 }

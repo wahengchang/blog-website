@@ -8,6 +8,11 @@ const Header = (props) => {
   const { auth } = props;
   return (
     <header>
+      <div id="header-menu">
+        <span />
+        <span />
+        <span />
+      </div>
       <div id="logo">{'Rukeith\'s blog'}</div>
       <SearchInput />
       <NavItem path="/intro" title="Intro" />
