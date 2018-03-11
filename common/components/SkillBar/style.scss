@@ -12,10 +12,9 @@
     display: inline-block;
   }
 
-  progress {
-    width: 15em;
-    height: 1.8em;
-    font-size: .8em;
+  meter {
+    width: 25em;
+    height: 1.3em;
     overflow: hidden;
     border-radius: 5em;
     border: 1px solid #0063a6;

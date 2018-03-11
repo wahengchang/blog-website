@@ -1,5 +1,6 @@
 import React from 'react';
 import SkillBar from '../SkillBar';
+import Carousel from '../Carousel';
 import './style.scss';
 
 const skills = [
@@ -72,7 +73,9 @@ const IntroPage = () => {
         <div className="intro-page-skill">
           { skillList }
         </div>
-        <div className="intro-page-experience">test</div>
+        <div className="intro-page-experience">
+          <Carousel />
+        </div>
       </main>
     )
   );
