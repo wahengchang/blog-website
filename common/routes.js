@@ -5,6 +5,7 @@ import ArticlePage from './containers/ArticlePage';
 // import SearchPage from './containers/SearchPage';
 import TagList from './containers/TagList';
 // import TagPage from './containers/TagPage';
+import LoginPage from './containers/LoginPage';
 import NotFoundPage from './containers/NotFoundPage';
 
 const routes = [
@@ -46,6 +47,10 @@ const routes = [
       //   path: '/search',
       //   component: SearchPage,
       // },
+      {
+        path: '/login',
+        component: LoginPage,
+      },
       {
         path: '*',
         component: NotFoundPage,
