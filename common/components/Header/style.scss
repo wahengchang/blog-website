@@ -1,5 +1,5 @@
 $header-height: 50px;
-$nav-width: 100px;
+$nav-width: 85px;
 
 @font-face {
   font-family: headerLogo;
@@ -17,8 +17,13 @@ header {
   #header-menu {
     padding: 5px;
     display: grid;
+    cursor: pointer;
     margin-left: 5px;
     grid-template-rows: repeat(3, 1fr);
+
+    &:hover span {
+      box-shadow: 1px 1px 2px 1px #888888;
+    }
 
     span {
       height: 5px;
@@ -36,34 +41,15 @@ header {
   }
 }
 
-header.login-auth {
-  .header-nav-item:nth-child(6) {
-    font-size: 15px;
-    line-height: $header-height / 2;
-  }
-}
-
-header.menu-open {
-  grid-template-columns: 50px repeat(3, 1fr);
-
-  .header-nav-item {
-    display: inline;
-  }
-}
-
-header.menu-open.login-auth {
-  grid-template-columns: 50px repeat(4, 1fr);
-
-  .header-nav-item {
-    display: inline;
-  }
-}
-
 @media only screen and (min-width: 680px) {
   header {
-
     &.login-auth {
       grid-template-columns: auto 1fr repeat(4, $nav-width);
+
+      .header-nav-item:nth-child(6) {
+        font-size: 15px;
+        line-height: $header-height / 2;
+      }
     }
 
     #header-menu {
@@ -72,22 +58,50 @@ header.menu-open.login-auth {
   }
 }
 
-@media only screen and (min-width: 590px) {
-  header.login-auth {
-    .header-nav-item:nth-child(6) {
-      font-size: 15px;
-      line-height: $header-height;
-    }
-  }
-}
-
 @media only screen and (max-width: 680px) {
   header {
     grid-template-columns: $header-height 1fr;
 
+    &.menu-open {
+      grid-template-columns: 50px repeat(3, 1fr);
+
+      &.login-auth {
+        grid-template-columns: 50px repeat(4, 1fr);
+
+        .header-nav-item:nth-child(6) {
+          font-size: 15px;
+          line-height: $header-height;
+        }
+      }
+
+      .header-nav-item {
+        display: inline;
+      }
+
+      .hamburger-top {
+        transform: rotate(45deg) translate(10px, 8px)
+      }
+      .hamburger-mid {
+        opacity: 0;
+      }
+      .hamburger-bottom {
+        transform: rotate(-45deg) translate(11px, -9px)
+      }
+    }
+
     #logo,
     .header-nav-item {
       display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  header.menu-open.login-auth {
+
+    .header-nav-item:nth-child(6) {
+      font-size: 15px;
+      line-height: $header-height / 2;
     }
   }
 }
