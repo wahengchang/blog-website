@@ -1,20 +1,32 @@
 header .header-search-input {
-  margin: .0 30px;
+  margin: 0 30px;
 
-  #search {
-    font: inherit;
-    cursor: text;
-    border: 0;
+  #header-search {
     width: 100%;
+    cursor: text;
+    font: inherit;
     outline: none;
     display: block;
+    line-height: 40px;
     color: currentColor;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 2px 0;
     box-sizing: content-box;
     background: transparent;
 
     &::placeholder {
-      opacity: 0.7;
-      color: darkgray;
+      color: #787878;
     }
+  }
+}
+
+.menu-open .header-search-input {
+  display: none;
+}
+
+@media only screen and (max-width: 680px) {
+  header .header-search-input {
+    margin: 0 10px;
   }
 }

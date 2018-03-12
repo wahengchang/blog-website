@@ -5,18 +5,31 @@ import SearchInput from '../SearchInput';
 import './style.scss';
 
 const Header = (props) => {
-  const { auth } = props;
+  const { auth, open, location = {} } = props;
+
+  let className = (auth) ? 'login-auth' : '';
+  className += (open) ? ' menu-open' : '';
+
   return (
-    <header>
+    <header className={className}>
       <div id="header-menu">
-        <span />
-        <span />
-        <span />
+        <span className="hamburger-top" />
+        <span className="hamburger-mid" />
+        <span className="hamburger-bottom" />
       </div>
       <div id="logo">{'Rukeith\'s blog'}</div>
       <SearchInput />
       <NavItem path="/intro" title="Intro" />
       <NavItem path="/articles" title="Blog" />
+      {
+        (() => {
+          if (auth) {
+            return (
+              <NavItem path="/create" title="Creaete Article" />
+            );
+          }
+        })()
+      }
       {
         (() => {
           if (auth) {
@@ -33,8 +46,15 @@ const Header = (props) => {
   );
 };
 
+Header.defaultProps = {
+  auth: true,
+  open: true,
+};
+
 Header.propTypes = {
-  auth: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  auth: PropTypes.bool,
+  open: PropTypes.bool,
 };
 
 export default Header;

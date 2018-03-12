@@ -4,11 +4,11 @@ import './style.scss';
 const SearchInput = () => (
   <div className="header-search-input">
     <input
-      id="search"
+      id="header-search"
       name="search"
       type="search"
       autoComplete="on"
-      placeholder="Search articles..."
+      placeholder="Search..."
     />
   </div>
 );

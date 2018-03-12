@@ -1,3 +1,5 @@
+$header-height: 50xp;
+
 @font-face {
   font-family: headerLogo;
   src: url(deftone-stylus.ttf);
@@ -6,10 +8,31 @@
 header {
   display: grid;
   font-size: 18px;
-  line-height: 65px;
+  line-height: $header-height;
   text-align: center;
   background-color: #5DAC81;
   grid-template-columns: auto 1fr repeat(3, 100px);
+
+  &.menu-open {
+    grid-template-columns: 50px repeat(3, 1fr);
+
+    &.login-auth {
+      grid-template-columns: 50px repeat(4, 1fr);
+    }
+  }
+
+  #header-menu {
+    display: grid;
+    padding: 5px;
+    grid-template-rows: repeat(3, 1fr);
+
+    span {
+      height: 5px;
+      margin: auto 0;
+      border-radius: 15em;
+      background-color: black;
+    }
+  }
 
   #logo {
     color: #6F3381;
@@ -28,7 +51,17 @@ header {
 
 @media only screen and (max-width: 680px) {
   header {
-    grid-template-columns: 100px auto;
+    grid-template-columns: $header-height auto;
+
+    &.menu-open {
+      .header-nav-item {
+        display: inline;
+        &:nth-child(6) {
+          font-size: 15px;
+          line-height: 25px;
+        }
+      }
+    }
 
     #logo,
     .header-nav-item {

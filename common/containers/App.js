@@ -8,19 +8,22 @@ import Footer from '../components/Footer';
 
 const styles = {
   display: 'grid',
-  gridTemplateRows: '65px 1fr 300px',
+  gridTemplateRows: '50px 1fr 300px',
 };
 
-const App = ({ route }) => (
-  <div style={styles}>
-    <Header />
-    {/* {renderRoutes(route.routes)} */}
-    {/* <Footer /> */}
-  </div>
-);
+const App = ({ route, location }) => {
+  return (
+    <div style={styles}>
+      <Header location={location} />
+      {/* {renderRoutes(route.routes)} */}
+      {/* <Footer /> */}
+    </div>
+  );
+};
 
 App.propTypes = {
   // auth: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
 };
 
