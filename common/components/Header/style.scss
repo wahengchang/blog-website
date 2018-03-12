@@ -1,4 +1,5 @@
-$header-height: 50xp;
+$header-height: 50px;
+$nav-width: 100px;
 
 @font-face {
   font-family: headerLogo;
@@ -8,27 +9,20 @@ $header-height: 50xp;
 header {
   display: grid;
   font-size: 18px;
-  line-height: $header-height;
   text-align: center;
+  line-height: $header-height;
   background-color: #5DAC81;
-  grid-template-columns: auto 1fr repeat(3, 100px);
-
-  &.menu-open {
-    grid-template-columns: 50px repeat(3, 1fr);
-
-    &.login-auth {
-      grid-template-columns: 50px repeat(4, 1fr);
-    }
-  }
+  grid-template-columns: auto 1fr repeat(3, $nav-width);
 
   #header-menu {
-    display: grid;
     padding: 5px;
+    display: grid;
+    margin-left: 5px;
     grid-template-rows: repeat(3, 1fr);
 
     span {
       height: 5px;
-      margin: auto 0;
+      margin-top: 4px;
       border-radius: 15em;
       background-color: black;
     }
@@ -37,31 +31,59 @@ header {
   #logo {
     color: #6F3381;
     min-width: 120px;
+    margin-left: 10px;
     font-family: headerLogo;
+  }
+}
+
+header.login-auth {
+  .header-nav-item:nth-child(6) {
+    font-size: 15px;
+    line-height: $header-height / 2;
+  }
+}
+
+header.menu-open {
+  grid-template-columns: 50px repeat(3, 1fr);
+
+  .header-nav-item {
+    display: inline;
+  }
+}
+
+header.menu-open.login-auth {
+  grid-template-columns: 50px repeat(4, 1fr);
+
+  .header-nav-item {
+    display: inline;
   }
 }
 
 @media only screen and (min-width: 680px) {
   header {
+
+    &.login-auth {
+      grid-template-columns: auto 1fr repeat(4, $nav-width);
+    }
+
     #header-menu {
       display: none;
     }
   }
 }
 
+@media only screen and (min-width: 590px) {
+  header.login-auth {
+    .header-nav-item:nth-child(6) {
+      font-size: 15px;
+      line-height: $header-height;
+    }
+  }
+}
+
 @media only screen and (max-width: 680px) {
   header {
-    grid-template-columns: $header-height auto;
-
-    &.menu-open {
-      .header-nav-item {
-        display: inline;
-        &:nth-child(6) {
-          font-size: 15px;
-          line-height: 25px;
-        }
-      }
-    }
+    grid-template-columns: $header-height 1fr;
 
     #logo,
     .header-nav-item {

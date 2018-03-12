@@ -47,8 +47,8 @@ const Header = (props) => {
 };
 
 Header.defaultProps = {
-  auth: true,
-  open: true,
+  auth: false,
+  open: false,
 };
 
 Header.propTypes = {

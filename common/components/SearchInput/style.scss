@@ -25,6 +25,14 @@ header .header-search-input {
   display: none;
 }
 
+@media only screen and (min-width: 680px) {
+  header {
+    .header-search-input {
+      display: inline;
+    }
+  }
+}
+
 @media only screen and (max-width: 680px) {
   header .header-search-input {
     margin: 0 10px;
