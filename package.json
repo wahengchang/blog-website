@@ -63,7 +63,9 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "history": "^4.7.2",
+    "http-status": "^1.0.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.0-alpha.0911da3",
     "react-dom": "^16.4.0-alpha.0911da3",
