@@ -17,9 +17,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-react": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.41",
+    "@babel/preset-env": "^7.0.0-beta.41",
+    "@babel/preset-react": "^7.0.0-beta.41",
     "autoprefixer": "^8.1.0",
     "babel-loader": "8.0.0-beta.0",
     "caniuse-lite": "^1.0.30000814",
