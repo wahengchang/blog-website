@@ -12,7 +12,9 @@ module.exports = {
     lost: {},
     'postcss-assets': {},
     'postcss-color-short': {},
-    'postcss-cssnext': {},
+    'postcss-cssnext': {
+      warnForDuplicates: false,
+    },
     'postcss-easing-gradients': {},
     'postcss-font-magician': {},
     'postcss-grid-kiss': {},

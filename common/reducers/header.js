@@ -1,13 +1,9 @@
-import { LOGIN, MENU_CLICK, WINDOW_RESIZE } from '../actions/header';
+import { MENU_CLICK } from '../actions/header';
 
-const header = (state, action) => {
+const header = (state = false, action) => {
   switch (action.type) {
-    case LOGIN:
-      return action.payload;
     case MENU_CLICK:
       return !state;
-    case WINDOW_RESIZE:
-      return state;
     default:
       return state;
   }

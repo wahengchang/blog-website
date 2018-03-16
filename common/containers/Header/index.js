@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as HeaderActions from '../../actions/header';
 import NavItem from '../../components/NavItem';
 import SearchInput from '../../components/SearchInput';
 import './style.scss';
 
-class Header extends Component {
-  componentDidMount() {}
+const Header = ({ token, menuOpen, menuClick }) => {
+  let className = (menuOpen) ? 'menu-open ' : '';
+  className += (token) ? 'login-auth ' : '';
 
-  componentWillUnmount() {}
-
-  render() {
-    let className = (this.props.menuOpen) ? 'menu-open ' : '';
-    className += (this.props.token) ? 'login-auth ' : '';
-
-    return (
-      <header className={className}>
-        <div id="header-menu" role="presentation" onClick={() => {}} onKeyDown={this.props.menuClick}>
-          <span className="hamburger-top" />
-          <span className="hamburger-mid" />
-          <span className="hamburger-bottom" />
-        </div>
-        <div id="logo">{'Rukeith\'s blog'}</div>
-        <SearchInput />
-        <NavItem path="/intro" title="Intro" />
-        <NavItem path="/articles" title="Blog" />
-        {
-          this.props.token && <NavItem path="/create" title="Creaete Article" />
-        }
-        {
-          this.props.token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />)
-        }
-      </header>
-    );
-  }
-}
+  return (
+    <header className={className}>
+      <div id="header-menu" role="presentation" onClick={menuClick}>
+        <span className="hamburger-top" />
+        <span className="hamburger-mid" />
+        <span className="hamburger-bottom" />
+      </div>
+      <div id="logo">{'Rukeith\'s blog'}</div>
+      <SearchInput />
+      <NavItem path="/intro" title="Intro" />
+      <NavItem path="/articles" title="Blog" />
+      {
+        token && <NavItem path="/create" title="Creaete Article" />
+      }
+      {
+        token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />)
+      }
+    </header>
+  );
+};
 
 Header.defaultProps = {
   token: '',
@@ -42,9 +38,15 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  menuClick: PropTypes.func.isRequired,
   token: PropTypes.string,
   menuOpen: PropTypes.bool,
+  menuClick: PropTypes.func.isRequired,
 };
 
-export default connect()(Header);
+const mapStateToProps = state => ({
+  menuOpen: state.header,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(HeaderActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
