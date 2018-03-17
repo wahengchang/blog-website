@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as HeaderActions from '../../actions/header';
+// import { bindActionCreators } from 'redux';
+// import * as HeaderActions from '../../actions/header';
 import NavItem from '../../components/NavItem';
 import SearchInput from '../../components/SearchInput';
 import './style.scss';
 
 export class Header extends React.Component {
   componentDidMount() {
+    const {menuClick} = this.props
     window.addEventListener("resize", function(){
       console.log('-=-=-=-= -=-=-=-= resize -=-=-=-= -=-=-=-= ')
+      return menuClick()
     });
   }
 
@@ -22,7 +24,6 @@ export class Header extends React.Component {
 
   render() {
     const { token, menuOpen, menuClick } = this.props
-
     let _style = (menuOpen) ? 'menu-open ' : '';
     _style += (token) ? 'login-auth ' : '';
   
@@ -63,6 +64,15 @@ const mapStateToProps = state => ({
   menuOpen: state.header,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(HeaderActions, dispatch);
+// const mapDispatchToProps = dispatch => bindActionCreators(HeaderActions, dispatch);
+
+const mapDispatchToProps = (dispatch) => ({
+  menuClick: () => {      
+    console.log('****** menuClick ******')
+    return dispatch({
+      type: 'MENU_CLICK',
+    });
+  }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
