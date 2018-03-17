@@ -7,30 +7,46 @@ import NavItem from '../../components/NavItem';
 import SearchInput from '../../components/SearchInput';
 import './style.scss';
 
-const Header = ({ token, menuOpen, menuClick }) => {
-  let className = (menuOpen) ? 'menu-open ' : '';
-  className += (token) ? 'login-auth ' : '';
+export class Header extends React.Component {
+  componentDidMount() {
+    window.addEventListener("resize", function(){
+      console.log('-=-=-=-= -=-=-=-= resize -=-=-=-= -=-=-=-= ')
+    });
+  }
 
-  return (
-    <header className={className}>
-      <div id="header-menu" role="presentation" onClick={menuClick}>
-        <span className="hamburger-top" />
-        <span className="hamburger-mid" />
-        <span className="hamburger-bottom" />
-      </div>
-      <div id="logo">{'Rukeith\'s blog'}</div>
-      <SearchInput />
-      <NavItem path="/intro" title="Intro" />
-      <NavItem path="/articles" title="Blog" />
-      {
-        token && <NavItem path="/create" title="Creaete Article" />
-      }
-      {
-        token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />)
-      }
-    </header>
-  );
-};
+  componentWillUnmount() {
+    window.removeEventListener("resize", function(){
+      console.log('-=-=-=-= -=-=-=-= componentWillUnmount -=-=-=-= -=-=-=-= ')
+    });
+  }
+
+  render() {
+    const { token, menuOpen, menuClick } = this.props
+
+    let _style = (menuOpen) ? 'menu-open ' : '';
+    _style += (token) ? 'login-auth ' : '';
+  
+    return (
+      <header className={_style}>
+        <div id="header-menu" role="presentation" onClick={menuClick}>
+          <span className="hamburger-top" />
+          <span className="hamburger-mid" />
+          <span className="hamburger-bottom" />
+        </div>
+        <div id="logo">{'Rukeith\'s blog'}</div>
+        <SearchInput />
+        <NavItem path="/intro" title="Intro" />
+        <NavItem path="/articles" title="Blog" />
+        {
+          token && <NavItem path="/create" title="Creaete Article" />
+        }
+        {
+          token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />)
+        }
+      </header>
+    );
+  }
+}
 
 Header.defaultProps = {
   token: '',
